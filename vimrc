@@ -39,6 +39,7 @@ Plugin 'https://github.com/wting/rust.vim'
 Plugin 'https://github.com/tpope/vim-rails.git'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Auto-Pairs'
+Plugin 'https://github.com/digitaltoad/vim-pug'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
