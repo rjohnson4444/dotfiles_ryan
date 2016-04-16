@@ -49,15 +49,15 @@ set encoding=utf-8
 "" Configure Plugins
 set laststatus=2                  " Always show the statusline
 
-" let g:airline_enable_branch=1
-" let g:airline_enable_syntastic=1
-" let g:airline_powerline_fonts=1   " automatic population of g:airline_symbols dictionary with powerline symbols.
-" let g:airline_detect_modified=1   " marks when the file has changed
-" let g:airline_detect_paste=1      " enable paste detection (set paste) ie I'm not typing, I'm pasting
-" let g:airline_detect_iminsert=0   " I have no idea
-" let g:airline_inactive_collapse=1 " inactive windows should have the left section collapsed to only the filename of that buffer.
-" let g:airline_solarized_bg='dark' " Use Solarized Dark theme
-" let g:airline_theme='powerlineish'        " Dark airline theme
+"" Airline themes stuff
+let g:airline_enable_branch=1
+let g:airline_enable_syntastic=1
+let g:airline_powerline_fonts=1   " automatic population of g:airline_symbols dictionary with powerline symbols.
+let g:airline_detect_modified=1   " marks when the file has changed
+let g:airline_detect_paste=1      " enable paste detection (set paste) ie I'm not typing, I'm pasting
+let g:airline_detect_iminsert=0   " I have no idea
+let g:airline_inactive_collapse=1 " inactive windows should have the left section collapsed to only the filename of that buffer.
+let g:airline_solarized_bg='dark' " Use Solarized Dark theme
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -75,7 +75,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim     "ctrlP plugin"
 
 runtime macros/matchit.vim                   " vim-textobj-rubyblock
 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif " close vim if NERDTree is the only open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " close vim if NERDTree is the only open buffer
 
 "" Autostart the NERDTree
 autocmd vimenter * NERDTree
@@ -166,6 +166,7 @@ cnoremap <Esc>b <S-Left> " commenting out b/c makes it pause
 cnoremap <Esc>f <S-Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
+
 " editing
 cnoremap <M-p> <Up>
 cnoremap <M-n> <Down>
