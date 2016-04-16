@@ -38,6 +38,7 @@ Plugin 'https://github.com/fatih/vim-go.git'
 Plugin 'https://github.com/wting/rust.vim'
 Plugin 'https://github.com/tpope/vim-rails.git'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'rking/ag.vim'
 Plugin 'Auto-Pairs'
 Plugin 'https://github.com/digitaltoad/vim-pug'
 
@@ -48,6 +49,9 @@ set encoding=utf-8
 
 "" Configure Plugins
 set laststatus=2                  " Always show the statusline
+
+"" Set Leader
+let mapleader = ","
 
 "" Airline themes stuff
 let g:airline_enable_branch=1
@@ -72,6 +76,9 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim     "ctrlP plugin"
+
+" Ag search mapping
+nnoremap <Leader>ag :Ag<space>
 
 runtime macros/matchit.vim                   " vim-textobj-rubyblock
 
@@ -140,7 +147,7 @@ set updatecount=0                        " Don't try to write swapfiles after so
 set backupskip=/tmp/*,/private/tmp/*"    " can edit crontab files
 
 "" Convenience
-nmap <Leader>p orequire "pry"<CR>binding.pry<ESC>;        " pry insertion
+nnoremap <Leader>p binding.pry<ESC>;        " pry insertion
 vnoremap . :norm.<CR>;                                    " in visual mode, "." will for each line, go into normal mode and execute the "."
 nnoremap <Leader>v :set paste<CR>"*p<CR>:set nopaste<CR>; " paste without being stupid ("*p means to paste on next line (p) from the register (") that represents the clipboard (*))
 
