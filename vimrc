@@ -147,7 +147,7 @@ set updatecount=0                        " Don't try to write swapfiles after so
 set backupskip=/tmp/*,/private/tmp/*"    " can edit crontab files
 
 "" Convenience
-nnoremap <Leader>p binding.pry<ESC>;        " pry insertion
+nnoremap <Leader>p obinding.pry<ESC>;        " pry insertion
 vnoremap . :norm.<CR>;                                    " in visual mode, "." will for each line, go into normal mode and execute the "."
 nnoremap <Leader>v :set paste<CR>"*p<CR>:set nopaste<CR>; " paste without being stupid ("*p means to paste on next line (p) from the register (") that represents the clipboard (*))
 
@@ -197,6 +197,12 @@ au  BufRead,BufNewFile *.sublime-snippet setfiletype html
 autocmd Filetype html setlocal ts=2 sw=2 expandtab               " for html, 2 spaces
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab               " for ruby, 2 spaces
 autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab   " for javascript, 4 spaces
+
+" Change cursor shape between insert and normal mode
+if $TERM_PROGRAM =~ "iTerm"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
 
 "" Maybe worth checking out
 " Profiling plugins
