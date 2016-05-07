@@ -79,6 +79,49 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim     "ctrlP plugin"
 
 " Ag search mapping
 nnoremap <Leader>ag :Ag<space>
+" Edit Vimrc file
+nnoremap <Leader>vrc :sp $MYVIMRC<cr>
+" load Vimrc file
+nnoremap <Leader>so :source $MYVIMRC<cr>
+" 0 for end of line
+nnoremap 0 ^
+" toggle number lines
+nnoremap <C-n> :call NumberToggle()<CR>
+
+"" Emacs/Readline keybindings for commandline mode
+"  http://tiswww.case.edu/php/chet/readline/readline.html#SEC4
+"  many of these taken from vimacs http://www.vim.org/scripts/script.php?script_id=300
+"  navigation
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <Esc>b <S-Left> " commenting out b/c makes it pause
+cnoremap <Esc>f <S-Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
+
+"" Convenience
+nnoremap <Leader>p obinding.pry<ESC>;        " pry insertion
+vnoremap . :norm.<CR>;                                    " in visual mode, "." will for each line, go into normal mode and execute the "."
+nnoremap <Leader>v :set paste<CR>"*p<CR>:set nopaste<CR>; " paste without being stupid ("*p means to paste on next line (p) from the register (") that represents the clipboard (*))
+
+"" easier navigation between split windows
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" replaces %/ with current directory, and %% with current file
+cmap %/ <C-R>=expand("%:p:h")."/"<CR>
+cmap %% <C-R>=expand("%")<CR>
+
+" editing
+cnoremap <M-p> <Up>
+cnoremap <M-n> <Down>
+cnoremap <C-k> <C-f>d$<C-c><End>
+cnoremap <C-y> <C-r><C-o>"
+cnoremap <C-d> <Right><C-h>
 
 runtime macros/matchit.vim                   " vim-textobj-rubyblock
 
@@ -114,8 +157,6 @@ function! NumberToggle()
   endif
 endfunction
 
-nnoremap <C-n> :call NumberToggle()<CR>
-
 "" Whitespace
 function! <SID>StripTrailingWhitespaces()
   " Preparation: save last search, and cursor position.
@@ -145,41 +186,6 @@ set nowritebackup                        " don't backup file while editing
 set noswapfile                           " don't create swapfiles for new buffers
 set updatecount=0                        " Don't try to write swapfiles after some number of updates
 set backupskip=/tmp/*,/private/tmp/*"    " can edit crontab files
-
-"" Convenience
-nnoremap <Leader>p obinding.pry<ESC>;        " pry insertion
-vnoremap . :norm.<CR>;                                    " in visual mode, "." will for each line, go into normal mode and execute the "."
-nnoremap <Leader>v :set paste<CR>"*p<CR>:set nopaste<CR>; " paste without being stupid ("*p means to paste on next line (p) from the register (") that represents the clipboard (*))
-
-" replaces %/ with current directory, and %% with current file
-cmap %/ <C-R>=expand("%:p:h")."/"<CR>
-cmap %% <C-R>=expand("%")<CR>
-
-"" easier navigation between split windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-"" Emacs/Readline keybindings for commandline mode
-"  http://tiswww.case.edu/php/chet/readline/readline.html#SEC4
-"  many of these taken from vimacs http://www.vim.org/scripts/script.php?script_id=300
-"  navigation
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
-cnoremap <Esc>b <S-Left> " commenting out b/c makes it pause
-cnoremap <Esc>f <S-Right>
-cnoremap <M-b> <S-Left>
-cnoremap <M-f> <S-Right>
-
-" editing
-cnoremap <M-p> <Up>
-cnoremap <M-n> <Down>
-cnoremap <C-k> <C-f>d$<C-c><End>
-cnoremap <C-y> <C-r><C-o>"
-cnoremap <C-d> <Right><C-h>
 
 if has("gui_running")
   let s:uname = system("uname")
