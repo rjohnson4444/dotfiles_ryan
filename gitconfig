@@ -1,0 +1,69 @@
+[user]
+  name             = Ryan Johnson
+  email            = rjohnson4444@live.com
+  username         = rjohnson4444
+[color]
+  ui               = true
+[color "diff"]
+  whitespace       = red reverse
+[color "branch"]
+	current          = green
+	local            = yellow
+	remote           = red
+[color "status"]
+  added            = green
+  changed          = red
+  untracked        = red reverse
+[push]
+  default          = upstream
+[core]
+  excludesfile     = ~/.gitignore
+  editor           = vim
+[status]
+  submodulesummary = true
+  relativePaths    = false
+[alias]
+  # Shorthand (shorter versions of common operations, sometimes with better defaults)
+    d        = diff --patience --ignore-space-change
+    co       = checkout
+    st       = status
+    praise   = blame
+
+  # Commits
+    shas     = log --pretty=format:\"%H\"
+    hist     = log --pretty=format:\"%Cgreen%h%Creset %Cblue%ad%Creset %s%C(yellow)%d%Creset %Cblue[%an]%Creset\" --graph --date=short
+
+  # Branches
+    # --all gives local and remote, --verbose 1x shows 1st line of log, 2x: show upstream branch
+    br       = branch --all --verbose --verbose
+
+    # list current branch
+    brcrnt   = rev-parse --abbrev-ref HEAD
+
+    # copy branch
+    brpb     = !git brcrnt | xargs echo -n | pbcopy
+
+  # Author info (who all worked on this thing?)
+    # something like number of commits by committer (doesn't quite match up, though)
+    count    = shortlog -sn
+
+    # list people who have committed
+    authors  = ! git log --format=\"%ae %an\" | sort -u | column -t
+
+  # Stash (slightly better stash commands... sadly, --keep-index doesn't work well enough to be useful, works for the stash, but not the pop)
+    # stash untracked files, too
+    stpush   = stash --include-untracked
+
+    # when popping, remember what was in the staging area
+    stpop    = stash pop --index
+
+  # Pull requests (stolen from https://github.com/pd/dotfiles/blob/e2d2418f96c5d13b4b06e3f2dff78dfb51eeb49c/gitconfig#L47-48)
+    # call with the pull request #, it will check out the pr locally
+    pr       = "!f() { remote=${2:-$(git remote|head -1)}; git fetch -fu $remote refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+
+    # remove local branches that were created from `git pr`
+    pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+
+  # Git objects (for low-level exploration of git objects)
+    type     = cat-file -t
+    dump     = cat-file -p
