@@ -30,7 +30,6 @@ Plugin 'https://github.com/tpope/vim-markdown.git'
 Plugin 'https://github.com/bling/vim-airline'
 Plugin 'https://github.com/tpope/vim-repeat.git'
 Plugin 'https://github.com/skwp/vim-rspec.git'
-Plugin 'https://github.com/vim-ruby/vim-ruby.git'
 Plugin 'https://github.com/tpope/vim-surround.git'
 Plugin 'https://github.com/nelstrom/vim-textobj-rubyblock.git'
 Plugin 'https://github.com/kana/vim-textobj-user.git'
@@ -87,6 +86,9 @@ nnoremap <Leader>so :source $MYVIMRC<cr>
 nnoremap 0 ^
 " toggle number lines
 nnoremap <C-n> :call NumberToggle()<CR>
+
+" toggle NerdTree
+nnoremap <Leader>n :NERDTreeToggle<CR>
 
 "" Emacs/Readline keybindings for commandline mode
 "  http://tiswww.case.edu/php/chet/readline/readline.html#SEC4
