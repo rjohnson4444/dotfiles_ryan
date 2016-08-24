@@ -37,8 +37,8 @@ Plugin 'https://github.com/fatih/vim-go.git'
 Plugin 'https://github.com/wting/rust.vim'
 Plugin 'https://github.com/tpope/vim-rails.git'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'rking/ag.vim'
 Plugin 'Auto-Pairs'
+Plugin 'nazo/pt.vim'
 Plugin 'https://github.com/digitaltoad/vim-pug'
 
 call vundle#end()            " required
@@ -76,14 +76,18 @@ let g:NERDTreeIndicatorMapCustom = {
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim     "ctrlP plugin"
 
-" Ag search mapping
-nnoremap <Leader>ag :Ag<space>
+" Pt search mapping
+nnoremap <Leader>pt :Pt!<space>
+
 " Edit Vimrc file
 nnoremap <Leader>vrc :sp $MYVIMRC<cr>
+
 " load Vimrc file
 nnoremap <Leader>so :source $MYVIMRC<cr>
+
 " 0 for end of line
 nnoremap 0 ^
+
 " toggle number lines
 nnoremap <C-n> :call NumberToggle()<CR>
 
