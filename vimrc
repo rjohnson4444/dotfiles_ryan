@@ -40,6 +40,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'Auto-Pairs'
 Plugin 'nazo/pt.vim'
 Plugin 'https://github.com/digitaltoad/vim-pug'
+Plugin 'mxw/vim-jsx'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,6 +74,9 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+
+" JSX syntax for .js and .jsx files
+let g:jsx_ext_required = 0
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim     "ctrlP plugin"
 
