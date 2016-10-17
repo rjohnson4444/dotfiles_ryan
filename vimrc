@@ -41,6 +41,7 @@ Plugin 'Auto-Pairs'
 Plugin 'nazo/pt.vim'
 Plugin 'https://github.com/digitaltoad/vim-pug'
 Plugin 'mxw/vim-jsx'
+Plugin 'Syntastic'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -63,6 +64,23 @@ let g:airline_detect_iminsert=0   " I have no idea
 let g:airline_inactive_collapse=1 " inactive windows should have the left section collapsed to only the filename of that buffer.
 let g:airline_solarized_bg='dark' " Use Solarized Dark theme
 
+"" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"" Autosource vimrc
+augroup reload_vimrc " {
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+"" NerdTree
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -112,7 +130,7 @@ cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 
 "" Convenience
-nnoremap <Leader>p obinding.pry<ESC>;        " pry insertion
+nnoremap <Leader>p obinding.pry<ESC>;                     " pry insertion
 vnoremap . :norm.<CR>;                                    " in visual mode, "." will for each line, go into normal mode and execute the "."
 nnoremap <Leader>v :set paste<CR>"*p<CR>:set nopaste<CR>; " paste without being stupid ("*p means to paste on next line (p) from the register (") that represents the clipboard (*))
 
