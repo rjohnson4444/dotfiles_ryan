@@ -17,6 +17,7 @@
     alias   ....="cd ../../.."
     alias  .....="cd ../../../.."
     alias ......="cd ../../../../.."
+    alias vim='/usr/local/bin'
 
     # NOTE: Delete this if you are using rvm
     # override cd b/c I always want to list dirs after I cd

@@ -41,7 +41,7 @@ Plugin 'Auto-Pairs'
 Plugin 'nazo/pt.vim'
 Plugin 'https://github.com/digitaltoad/vim-pug'
 Plugin 'mxw/vim-jsx'
-Plugin 'Syntastic'
+Plugin 'https://github.com/ngmy/vim-rubocop.git'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -63,16 +63,6 @@ let g:airline_detect_paste=1      " enable paste detection (set paste) ie I'm no
 let g:airline_detect_iminsert=0   " I have no idea
 let g:airline_inactive_collapse=1 " inactive windows should have the left section collapsed to only the filename of that buffer.
 let g:airline_solarized_bg='dark' " Use Solarized Dark theme
-
-"" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 "" Autosource vimrc
 augroup reload_vimrc " {
@@ -103,6 +93,9 @@ nnoremap <Leader>pt :Pt!<space>
 
 " Edit Vimrc file
 nnoremap <Leader>vrc :sp $MYVIMRC<cr>
+
+" RuboCop
+let g:vimrubocop_keymap = 1
 
 " load Vimrc file
 nnoremap <Leader>so :source $MYVIMRC<cr>
