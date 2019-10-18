@@ -1,6 +1,7 @@
 # various paths
 set --export PATH $HOME/bin               \
                   $HOME/code/dotfiles/bin \
+                  $HOME/EmbeddedArm/gcc-arm-none-eabi-3_1_2018/bin \
                   /usr/local/bin          \
                   $PATH
 
@@ -8,11 +9,11 @@ set --export PATH $HOME/bin               \
 set --export CUCUMBER_FORMAT pretty
 
 # Custom kill and foreground commands since I work with a lot of background jobs
-for i in (seq 30)
-  eval "function $i
-          fg %$i
-        end"
-end
+# for i in (seq 30)
+#   eval "function $i
+#           fg %$i
+#         end"
+# end
 
 # Load ruby. Interface is less helpful than rbenv
 # but Brixen says it works with rbx in ways that rbenv's assumptions won't let it

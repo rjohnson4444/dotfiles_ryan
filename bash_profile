@@ -3,7 +3,7 @@
 # Environment Variables
   export HOME="${HOME-"$(echo ~)"}"                                     # This gets messed up sometimes, for unknown reasons, which messes chruby up
   export EDITOR='vim'                                                  # Set to your text editor
-  export PATH="/usr/local/bin:$HOME/bin:$HOME/code/dotfiles_ryan/bin:$PATH"  # Look for executables in homebrew first
+  export PATH="/usr/local/bin:$HOME/bin:$HOME/go:$HOME/code/dotfiles_ryan/bin:$HOME/EmbeddedArm/bin:$PATH"  # Look for executables in homebrew first
 
 # Load chruby
   source "/usr/local/share/chruby/chruby.sh"  # functions

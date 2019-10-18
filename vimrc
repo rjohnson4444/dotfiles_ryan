@@ -17,7 +17,6 @@ Plugin 'https://github.com/scrooloose/nerdcommenter.git'
 Plugin 'https://github.com/ervandew/supertab.git'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'https://github.com/Shougo/unite.vim.git'
-Plugin 'https://github.com/kchmck/vim-coffee-script.git'
 Plugin 'https://github.com/tpope/vim-commentary.git'
 Plugin 'https://github.com/tpope/vim-cucumber.git'
 Plugin 'https://github.com/elixir-lang/vim-elixir.git'
@@ -42,6 +41,12 @@ Plugin 'nazo/pt.vim'
 Plugin 'https://github.com/digitaltoad/vim-pug'
 Plugin 'mxw/vim-jsx'
 Plugin 'https://github.com/ngmy/vim-rubocop.git'
+Plugin 'https://github.com/prettier/prettier'
+Plugin 'tomlion/vim-solidity'
+Plugin 'skammer/vim-css-color'
+Plugin 'iandingx/leetcode.vim'
+Plugin 'https://github.com/leafgarland/typescript-vim.git'
+Plugin 'https://github.com/Quramy/tsuquyomi.git'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -63,6 +68,26 @@ let g:airline_detect_paste=1      " enable paste detection (set paste) ie I'm no
 let g:airline_detect_iminsert=0   " I have no idea
 let g:airline_inactive_collapse=1 " inactive windows should have the left section collapsed to only the filename of that buffer.
 let g:airline_solarized_bg='dark' " Use Solarized Dark theme
+
+"" Leetcode - Practice bro
+let g:leetcode_solution_filetype='javascript'
+let g:leetcode_categories=['algorithms'] " add shell and databases later
+let g:leetcode_username='rljohnson4444@gmail.com'
+let g:leetcode_password='*@w.m*XqI`_8D^)V'
+nnoremap <leader>ll :LeetCodeList<cr>
+nnoremap <leader>lt :LeetCodeTest<cr>
+nnoremap <leader>ls :LeetCodeSubmit<cr>
+nnoremap <leader>li :LeetCodeSignIn<cr>
+
+"" Typescript
+let g:tsuquyomi_shortest_import_path = 1
+nnoremap <leader>tsc :make<cr>
+" <Leader> t (shows info about the type under the cursor)
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+" <C-x> <C-o> (use for autocomplete of types)
+"
+" replace name under cursor
+autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbolC)
 
 "" Autosource vimrc
 augroup reload_vimrc " {
@@ -86,7 +111,9 @@ let g:NERDTreeIndicatorMapCustom = {
 " JSX syntax for .js and .jsx files
 let g:jsx_ext_required = 0
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim     "ctrlP plugin"
+"ctrlP plugin"
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " Pt search mapping
 nnoremap <Leader>pt :Pt!<space>
@@ -201,6 +228,10 @@ set backspace=indent,eol,start                               " backspace through
 set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 
+"" Autocompletion with ctrl x + ctrl o
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 "" Vim, Imma edit the same file multiple times, okay? deal with it
 set nobackup                             " no backup files
 set nowritebackup                        " don't backup file while editing
@@ -223,7 +254,10 @@ au  BufRead,BufNewFile *.sublime-snippet setfiletype html
 " indentation for different files
 autocmd Filetype html setlocal ts=2 sw=2 expandtab               " for html, 2 spaces
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab               " for ruby, 2 spaces
-autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab   " for javascript, 4 spaces
+autocmd Filetype solidity setlocal ts=4 sw=4 expandtab           " for solidity, 2 spaces
+autocmd Filetype go setlocal ts=4 sw=4 expandtab                 " for go, 4 spaces
+autocmd Filetype typescript setlocal ts=2 sw=2 expandtab         " for typescript, 2 spaces
+" autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab   " for javascript, 4 spaces
 
 " Change cursor shape between insert and normal mode
 if $TERM_PROGRAM =~ "iTerm"

@@ -1,0 +1,1 @@
+/Users/ryanjohnson/.config/fisherman/nvm/functions/nvm.fish

@@ -1,0 +1,1 @@
+/Users/ryanjohnson/.config/fisherman/fnm/conf.d/fnm.fish
